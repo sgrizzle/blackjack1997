@@ -1,0 +1,430 @@
+<HEAD>
+<TITLE>BLACKJACK - by Scott Grizzle</TITLE>
+<!--
+Blackjack v2.0N
+This is an example of the power of Javascript
+written by ShadowPhoenix in July 1997
+This version is written for Netscape browsers
+Netscape and Microsoft versions of the game and 
+are available by request. Simply email the author.
+You can use the mail form on the rules page.
+-->
+<SCRIPT LANGUAGE=Javascript>
+function draw() {
+      document.player.card.value=("0")
+      document.player.card.value=Math.round(100 * Math.random())
+}
+
+function blackjack()  {
+//       alert('Blackjack')
+       document.cards.stood.value=0
+       document.cards.dealt.value="0"
+       document.player.overallnum.value = (eval((document.player.overallnum.value - 0) + ((document.bet.amt.value - 0) * 1)))
+       document.player.overall.value = ("$" + document.player.overallnum.value)
+//       start()
+}
+
+
+function cardshow(name,amt)  {
+     var oldtotal=document.show.total.value
+     if (document.show.card1.value=="0") {
+     document.show.card1.value=(" " + name)
+}
+     else {if (document.show.card2.value=="0") {
+     document.show.card2.value=(" " + name)
+}
+     else  {
+          if (document.show.card3.value=="0") {
+     document.show.card3.value=(" " + name)
+}
+     else  {
+     if (document.show.card4.value=="0") {
+     document.show.card4.value=(" " + name)
+}
+     else  {
+     if (document.show.card5.value=="0") {
+     document.show.card5.value=(" " + name)
+}
+     else  {
+     if (document.show.card6.value=="0") {
+     document.show.card6.value=(" " + name)
+}
+     else  {
+     if (document.show.card7.value=="0") {
+     document.show.card7.value=(" " + name)
+}
+}
+}
+}
+}
+}
+}
+     if (((document.show.total.value-0) <= 10) && ((amt-0)==1))  {
+         amt = eval((amt-0)+10)
+}
+     document.show.total.value = eval((document.show.total.value-0) + (amt-0))
+     if (document.show.total.value > 21) {
+     document.cards.stood.value=0
+     document.cards.dealt.value="0"
+//       alert('You have gone over. Dealer wins.')
+       document.player.overallnum.value = (eval(document.player.overallnum.value - ((document.bet.amt.value - 0) * 1)))
+       document.player.overall.value = ("$" + document.player.overallnum.value)
+//       start()
+}
+     if ((document.show.total.value-0) == 21) {
+       blackjack()
+}
+}
+
+
+function turncard()  {
+      var drawn = document.player.card.value
+      if (drawn < Math.round(document.cards.uno.value))  {
+          cardshow("A",1)
+}
+      else{
+      if (drawn < Math.round(document.cards.dos.value))
+          {cardshow('2',2)
+}
+
+      else{
+      if (drawn < Math.round(document.cards.tres.value))
+           {cardshow('3',3)
+}
+      else{
+      if (drawn < Math.round(document.cards.quatro.value))
+          {cardshow('4',4)
+}
+      else{
+      if (drawn < Math.round(document.cards.cinco.value))
+          {cardshow('5',5)
+}
+      else{
+      if (drawn < Math.round(document.cards.seis.value))
+          {cardshow('6',6)
+}
+      else{
+      if (drawn < Math.round(document.cards.seite.value))
+          {cardshow('7',7)
+}
+      else{
+      if (drawn < Math.round(document.cards.ocho.value))
+          {cardshow('8',8)
+}
+      else{
+      if (drawn < Math.round(document.cards.nueve.value))
+          {cardshow('9',9)
+}
+      else{
+      if (drawn < Math.round(document.cards.dias.value))
+          {cardshow('10',10)
+}
+      else{
+      if (drawn < Math.round(document.cards.once.value))
+          {cardshow('J',10)
+}
+      else{
+      if (drawn < Math.round(document.cards.doce.value))
+          {cardshow('Q',10)
+}
+      else{
+      if (drawn < Math.round(document.cards.trece.value))
+          {cardshow('K',10)
+}
+      else{
+      play()
+}
+
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+
+     return;
+}
+
+function play()  {
+     if(document.cards.dealt.value=="1") {
+     draw();
+     turncard();
+     return;
+}
+}
+
+function firstdeal() {
+     document.cards.stood.value="1"
+     document.dealer.total.value=0
+     document.show.wager.value=("$" + document.bet.amt.value)
+     if((document.cards.dealt.value-0)==(0-0)) {
+     document.cards.dealt.value="1"
+     document.show.total.value=0
+     document.show.card1.value=0
+     document.show.card2.value=0
+     document.show.card3.value=0
+     document.show.card4.value=0
+     document.show.card5.value=0
+     document.show.card6.value=0
+     document.show.card7.value=0
+     document.dealer.total.value=0
+     play()
+     play()
+}
+}
+
+function start() {
+     document.show.card1.value=0
+     document.show.card2.value=0
+     document.show.card3.value=0
+     document.show.card4.value=0
+     document.show.card5.value=0
+     document.show.card6.value=0
+     document.show.card7.value=0
+     document.show.total.value=0
+     document.cards.dealt.value="0"
+     document.dealer.total.value=0
+     document.show.wager.value=("$" + document.bet.amt.value)
+}
+
+function dealdraw() {
+      document.dealer.card.value=("0")
+      document.dealer.card.value=Math.round(100 * Math.random())
+}
+function dealshow(amt)  {
+     var oldtotal=document.dealer.total.value
+     if (((amt-0)==1) && (document.dealer.total.value < 11)) {
+            document.dealer.total.value=((oldtotal-0)+(11-0))
+}
+
+     else  {
+     document.dealer.total.value=((oldtotal-0)+(amt-0))
+}
+}
+
+function turndeal()  {
+      var drawn = document.dealer.card.value
+      if (drawn < Math.round(document.cards.uno.value))  {
+          dealshow(1)
+}
+      else{
+      if (drawn < Math.round(document.cards.dos.value))
+          {dealshow(2)
+}
+      else{
+      if (drawn < Math.round(document.cards.tres.value))
+           {dealshow(3)
+}
+      else{
+      if (drawn < Math.round(document.cards.quatro.value))
+          {dealshow(4)
+}
+      else{
+      if (drawn < Math.round(document.cards.cinco.value))
+          {dealshow(5)
+}
+      else{
+      if (drawn < Math.round(document.cards.seis.value))
+          {dealshow(6)
+}
+      else{
+      if (drawn < Math.round(document.cards.seite.value))
+          {dealshow(7)
+}
+      else{
+      if (drawn < Math.round(document.cards.ocho.value))
+          {dealshow(8)
+}
+      else{
+      if (drawn < Math.round(document.cards.nueve.value))
+          {dealshow(9)
+}
+      else{
+      if (drawn < Math.round(document.cards.trece.value))
+          {dealshow(10)
+}
+      else{
+      dealplay()
+}
+
+}
+}
+}
+}
+}
+}
+}
+}
+}
+
+     return;
+}
+
+function dealplay()  {
+     dealdraw();
+     turndeal();
+     return;
+}
+
+function dealing()  {
+     if ((document.dealer.total.value-0) < (document.dealer.stand.value-0)) {
+         dealplay()
+         dealing()
+}
+     return;
+}
+
+
+function stand()  {
+     if((document.cards.stood.value-0)==(1-0)) {
+     document.cards.stood.value=0
+     document.cards.dealt.value="0"
+     dealing()
+     if((document.dealer.total.value-0) > 21) {
+         document.player.overallnum.value = (eval(((document.bet.amt.value-0) * 1) + (document.player.overallnum.value-0)))
+         document.player.overall.value = ("$" + document.player.overallnum.value)
+}
+     else {          
+     if((document.show.total.value-0) > (document.dealer.total.value-0))  {
+         document.player.overallnum.value = (eval(((document.bet.amt.value-0) * 1) + (document.player.overallnum.value-0)))
+         document.player.overall.value = ("$" + document.player.overallnum.value)
+}
+     else {
+       document.player.overallnum.value = (eval(document.player.overallnum.value - ((document.bet.amt.value-0) * 1)))
+       document.player.overall.value = ("$" + document.player.overallnum.value)
+}         
+}
+     if((document.player.overallnum.value-0) <= 0)  {
+       alert("You are out of money. Thank you for playing.")
+       restart()
+}
+}
+}
+
+function restart()  {
+     document.dealer.total.value=0
+     document.show.total.value = 0
+     document.player.overallnum.value = 200
+     document.player.overall.value = ("$" + document.player.overallnum.value)
+     document.show.wager.value=("$" + document.bet.amt.value)
+     start()
+}
+
+function quit()   {
+    if(
+     confirm('Are you sure you want to quit?'))
+    {self.close()
+}
+}
+
+function wager() {
+   var wageamt = prompt("How much (in dollars) do you wish to bet on each hand?","")
+   if (Math.round(wageamt) <= Math.round(0))  {
+     document.bet.amt.value=document.bet.amt.value
+}
+   else {
+   document.bet.amt.value=wageamt
+   start()
+}
+   if ((document.bet.amt.value-0) == (document.cards.secret.value-0)) {
+     document.player.overallnum.value=((document.player.overallnum.value-0)+(5000-0))
+     document.player.overall.value = ("$" + document.player.overallnum.value)
+     wager()
+}
+
+}
+
+function rules() {
+    var bjrules
+    bjrules = open("","win2","scrollbars=yes,width=350,height=230");
+    bjrules.focus();
+    bjrules.document.clear();
+    bjrules.document.write("<HEAD><TITLE>RULES & SCORING</TITLE></head><BODY BGCOLOR=gray><font size=7><B><TT><CENTER>RULES</CENTER></TT><B></font><HR><h3>You start with $200. Play continues until you run out of money. Your wager starts out at $20 a hand but you can change it between hands. The goal is to gain a hand of greater value than the dealer without going over 21. If you get 21, winning is automatic and you get paid back 5 times your wager. If your hand is better than the dealer or the dealer goes over, payback is 2 times your wager. Dealer wins all ties (excluding 21). If you go over 21 or your hand is less than the dealer's, you lose the amount you wagered.<center><form name='bob' method=get action='mailto:shdwphnx@hotmail.com '><INPUT TYPE=hidden NAME=subject size=55 maxlength=800 VALUE=''><INPUT TYPE=Submit VALUE='Email&nbspProgrammer' onClick='document.bob.subject.value=top.location.href'><input type=button value=Return onClick=self.close()></form></center>"); 
+}															
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor=gray text=gray onload=restart()>
+<center>
+<font face=symbol size=7 color=black>&#9824</font>
+<font face=symbol size=7 color=red>&#9829</font>&nbsp
+<font face=arial size=6 color=black><B>BlackJack</B></font>&nbsp
+<font face=symbol size=7 color=red>&#9827</font>
+<font face=symbol size=7 color=black>&#9830</font>
+<HR>&nbsp<BR>
+<TABLE border=0 width=400>
+<TR>
+<TD colspan=2 align=left><form name="show">
+<FONT size=4 face=arial color=white>
+Your Cards:
+<INPUT TYPE=text NAME=card1 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card2 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card3 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card4 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card5 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card6 size=2 maxlength=800 value=0>
+<INPUT TYPE=text NAME=card7 size=2 maxlength=800 value=0>
+</TD></TR>
+<TR><TD align=center><FONT size=3 face=arial color=white>
+Your bet:
+<INPUT TYPE=text NAME=wager size=5 maxlength=800 value=0>
+&nbspYou have:<INPUT TYPE=text NAME=total size=2 maxlength=800 value="0">
+</form>
+</TD><TD align=right>
+<form name="dealer">
+<FONT size=3 face=arial color=white>
+Dealer has: 
+<INPUT TYPE=hidden name=stand value=16>
+<INPUT TYPE=hidden name=card value=0>
+<INPUT TYPE=text size=2 name=total value=0>
+</form>
+</TD></TR>
+<TR><TD colspan=2 align=center>
+<form name="player">
+<INPUT TYPE=hidden NAME=card size=3 maxlength=800>
+<FONT size=4 face=arial color=white>Your total cash:
+<INPUT TYPE=hidden name=overallnum size=20 value=0>
+<INPUT TYPE=text name=overall size=20>
+</form>
+</TD></TR>
+<TR><TD colspan=2 align=center>
+<form name=buttons>
+<INPUT TYPE=button value=Deal onClick=firstdeal()>
+<INPUT TYPE=button value=Draw onClick=play()>
+<INPUT TYPE=button value=Stand onClick=stand()>
+<INPUT TYPE=button value=Wager onClick=wager()>
+</TD></TR>
+<TR><TD colspan=2 align=center>
+<INPUT TYPE=button value=Rules onclick=rules()>
+<INPUT TYPE=button value=Restart onClick=restart()>
+<INPUT TYPE=button value=Quit onClick=quit()>
+</form>
+</TD></TR>
+</TABLE>
+<form name="cards">
+<INPUT TYPE=hidden name=uno value="7">
+<INPUT TYPE=hidden name=dos value="14">
+<INPUT TYPE=hidden name=tres value="21">
+<INPUT TYPE=hidden name=quatro value="28">
+<INPUT TYPE=hidden name=cinco value="35">
+<INPUT TYPE=hidden name=seis value="42">
+<INPUT TYPE=hidden name=seite value="49">
+<INPUT TYPE=hidden name=ocho value="56">
+<INPUT TYPE=hidden name=nueve value="63">
+<INPUT TYPE=hidden name=dias value="70">
+<INPUT TYPE=hidden name=once value="77">
+<INPUT TYPE=hidden name=doce value="84">
+<INPUT TYPE=hidden name=trece value="91">
+<INPUT TYPE=hidden name=dealt value="0">
+<INPUT TYPE=hidden name=stood value="0">
+<INPUT TYPE=hidden name=secret value="69423712">
+</form>
+<form name="bet">
+<input type=hidden name=amt value=20>
+</form>
